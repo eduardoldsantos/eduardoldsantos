@@ -1,0 +1,32 @@
+from sys import exit
+from datetime import date
+from time import sleep
+sexo = str(input("Informe se (H) - Homem ou (M) - Mulher: ")) .upper()
+if sexo == 'M':
+    print("Você não precisa se ALISTAR!")
+    exit()
+elif sexo == 'H':
+    print("Você precisa se ALISTAR! Por favor preencha os dados abaixo.")
+    sleep(1.5)
+else:
+    print("Dados invalidos! Por favor informar corretamente")
+    exit()
+nasc = int(input("Qual o ano de nascimento: "))
+atual = date.today().year
+idade = atual - nasc
+print("\033[1;33;45mANALISANDO...\033[m")
+sleep(3)
+print(f'Quem nasceu no ano {nasc} tem {idade} anos em  {atual}')
+if idade == 18:
+    print('\033[1;36mVocê precisa se alistar IMEDIATAMENTE')
+elif idade < 18:
+    restante = 18 - idade
+    print(f'\033[1;32mAinda faltam {restante} anos para o alistamento ')
+    ano = atual + restante
+    print(f'Seu Alistamento será em {ano}')
+elif idade > 18:
+    restante = idade - 18
+    print(f'\033[1;31mVocê já deveria ter se alistado há {restante} anos.')
+    ano = atual - restante
+    print(f'Seu Alistamento foi em {ano}\033[m')
+print('-=-' * 20)
